@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
+
+# Load data
+df = pd.read_csv("./data/shopping_trends.csv")
+
+# Display all column names
+st.write(df.columns)
 
 # Show Data Index Price
 st.header("Show Data Index Price")

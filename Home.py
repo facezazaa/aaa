@@ -11,8 +11,8 @@ st.write(df.head(10))
 st.header("Show Chart")
 
 # Age Distribution by Platform (Grouped Bar Chart)
-age_range = st.slider("Select age range", min_value=df["age"].min(), max_value=df["age"].max(), value=(df["age"].min(), df["age"].max()))
-filtered_df = df[(df["age"] >= age_range[0]) & (df["age"] <= age_range[1])]
+age_range = st.slider("Select gender range", min_value=df["gender"].min(), max_value=df["gender"].max(), value=(df["gender"].min(), df["gender"].max()))
+filtered_df = df[(df["gender"] >= age_range[0]) & (df["gender"] <= age_range[1])]
 chart = alt.Chart(filtered_df).mark_bar().encode(
     x=alt.X('age:Q', title='Age'),
     y=alt.Y('count()', title='Count'),

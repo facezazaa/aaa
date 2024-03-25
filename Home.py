@@ -53,15 +53,15 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 # Gender Distribution (Grouped Bar Chart)
-Purchase amount_counts = df['Purchase amount'].value_counts()
-Purchase amount_chart = alt.Chart(gPurchase amount_counts.reset_index()).mark_bar().encode(
-    x=alt.X('index:N', title='Purchase amount'),
+purchase_amount_counts = df['Purchase amount'].value_counts()
+bar_chart = alt.Chart(purchase_amount_counts.reset_index()).mark_bar().encode(
+    x=alt.X('index:N', title='Purchase Amount'),
     y=alt.Y('Purchase amount:Q', title='Count'),
     tooltip=['index:N', 'Purchase amount:Q']
 ).properties(
     width=600,
     height=400,
-    title='Purchase amount Distribution'
+    title='Purchase Amount Distribution'
 )
 st.altair_chart(Purchase amount_chart, use_container_width=True)
 

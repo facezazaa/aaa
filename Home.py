@@ -55,17 +55,20 @@ bar_chart = alt.Chart(max_purchase_by_platform).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 
-# Gender Distribution (Grouped Bar Chart)
-gender_counts = df['Gender'].value_counts()
-gender_chart = alt.Chart(gender_counts.reset_index()).mark_bar().encode(
-    x=alt.X('index:N', title='Gender'),
-    y=alt.Y('Gender:Q', title='Count'),
-    tooltip=['index:N', 'Gender:Q']
+# Gender Distribution by Preferred Payment Method (Grouped Bar Chart)
+gender_payment_counts = df.groupby(['Gender', 'Preferred Payment Method']).size().reset_index(name='count')
+gender_payment_chart = alt.Chart(gender_payment_counts).mark_bar().encode(
+    x=alt.X('Preferred Payment Method:N', title='Preferred Payment Method'),
+    y=alt.Y('count:Q', title='Count'),
+    color='Gender:N',
+    tooltip=['Gender', 'Preferred Payment Method', 'count']
 ).properties(
     width=600,
     height=400,
-    title='Gender Distribution'
+    title='Gender Distribution by Preferred Payment Method'
 )
+st.altair_chart(gender_payment_chart, use_container_width=True)
+
 st.altair_chart(gender_chart, use_container_width=True)
 st.altair_chart(gender_chart, use_container_width=True)
 

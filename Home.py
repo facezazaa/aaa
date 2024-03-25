@@ -53,28 +53,29 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 # Gender Distribution (Grouped Bar Chart)
-purchase_amount_counts = df['Purchase amount'].value_counts()
-bar_chart = alt.Chart(purchase_amount_counts.reset_index()).mark_bar().encode(
-    x=alt.X('index:N', title='Purchase Amount'),
-    y=alt.Y('Purchase amount:Q', title='Count'),
-    tooltip=['index:N', 'Purchase amount:Q']
+gender_counts = df['Gender'].value_counts()
+gender_chart = alt.Chart(gender_counts.reset_index()).mark_bar().encode(
+    x=alt.X('index:N', title='Gender'),
+    y=alt.Y('Gender:Q', title='Count'),
+    tooltip=['index:N', 'Gender:Q']
 ).properties(
     width=600,
     height=400,
-    title='Purchase Amount Distribution'
+    title='Gender Distribution'
 )
-st.altair_chart(purchase_amount_chart, use_container_width=True)
+st.altair_chart(gender_chart, use_container_width=True)
+
 # Platform Distribution (Pie Chart)
-platform_counts = df['platform'].value_counts()
+platform_counts = df['Platform'].value_counts()
 platform_chart = alt.Chart(platform_counts.reset_index()).mark_bar().encode(
     x=alt.X('index:N', title='Platform'),
-    y=alt.Y('platform:Q', title='Count'),
-    tooltip=['index:N', 'platform:Q']
+    y=alt.Y('Platform:Q', title='Count'),
+    tooltip=['index:N', 'Platform:Q']
 ).properties(
     width=600,
     height=400,
     title='Platform Distribution'
 )
 st.altair_chart(platform_chart, use_container_width=True)
-print(df.head())
+
 

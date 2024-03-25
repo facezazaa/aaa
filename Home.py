@@ -41,18 +41,19 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 # Max Purchase Amount by Platform (Grouped Bar Chart)
-max_purchase_by_platform = df.groupby('Platform')['Purchase Amount (USD)'].max().reset_index()
+max_purchase_by_platform = df.groupby('Platform')['Purchase Amount'].max().reset_index()
 bar_chart = alt.Chart(max_purchase_by_platform).mark_bar().encode(
     x=alt.X('Platform:N', title='Platform'),
-    y=alt.Y('Purchase Amount (USD):Q', title='Max Purchase Amount (USD)'),
+    y=alt.Y('Purchase Amount:Q', title='Max Purchase Amount (USD)'),
     color=alt.Color('Platform:N', legend=None),
-    tooltip=['Platform', 'Purchase Amount (USD)']
+    tooltip=['Platform', 'Purchase Amount']
 ).properties(
     width=600,
     height=400,
     title='Max Purchase Amount by Platform'
 )
 st.altair_chart(bar_chart, use_container_width=True)
+
 
 # Gender Distribution (Grouped Bar Chart)
 gender_counts = df['Gender'].value_counts()

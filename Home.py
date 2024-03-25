@@ -33,14 +33,14 @@ st.pyplot()
 
 html_sales_by_gender = """
 <div style="background-color:#0E1117;border-bottom: 3px solid #ffffff;border-top: 3px solid #ffffff;">
-<center><h3>ยอดขายตามภูมิภาค</h3></center>
+<center><h3>เพศ</h3></center>
 </div>
 """
 st.markdown(html_sales_by_gender, unsafe_allow_html=True)
 
 plt.figure(figsize=(15, 5))
 sns.countplot(x='Gender', data=gender_data)  # แก้เป็น gender_data แทน shopping_trends.csv
-plt.title('ยอดขายตามภูมิภาค')
+plt.title('เพศ')
 plt.xlabel('ภูมิภาค')
 plt.ylabel('จำนวน')
 plt.xticks(rotation=45)

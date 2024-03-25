@@ -56,6 +56,6 @@ st.altair_chart(bar_chart, use_container_width=True)
 
 # Gender Distribution (Grouped Bar Chart)
 gender_counts = df['Gender'].value_counts()
-gender_chart = alt.Chart(gender_counts
+gender_chart = alt.Chart(gender_counts)
 
 

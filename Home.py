@@ -63,8 +63,7 @@ bar_chart = alt.Chart(purchase_amount_counts.reset_index()).mark_bar().encode(
     height=400,
     title='Purchase Amount Distribution'
 )
-st.altair_chart(Purchase amount_chart, use_container_width=True)
-
+st.altair_chart(purchase_amount_chart, use_container_width=True)
 # Platform Distribution (Pie Chart)
 platform_counts = df['platform'].value_counts()
 platform_chart = alt.Chart(platform_counts.reset_index()).mark_bar().encode(

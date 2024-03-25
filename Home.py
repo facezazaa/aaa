@@ -67,6 +67,7 @@ gender_chart = alt.Chart(gender_counts.reset_index()).mark_bar().encode(
     title='Gender Distribution'
 )
 st.altair_chart(gender_chart, use_container_width=True)
+st.altair_chart(gender_chart, use_container_width=True)
 
 # Platform Distribution (Pie Chart)
 platform_counts = df['Preferred Payment Method'].value_counts()

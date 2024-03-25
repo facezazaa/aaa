@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # Show Data Index Price
 st.header("Show Data Index Price")
-df = pd.read_csv("./data/dummy_data.csv")
+df = pd.read_csv("./data/shopping_trends.csv")
 st.write(df.head(10))
 
 # Show Chart

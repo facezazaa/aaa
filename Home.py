@@ -7,7 +7,7 @@ import pandas as pd
 # Show Data Index Price
 st.header("Show Data Index Price")
 df = pd.read_csv("./data/shopping_trends.csv")
-st.write(df.head(10))
+st.write(df.columns)
 
 # Show Chart
 st.header("Show Chart")

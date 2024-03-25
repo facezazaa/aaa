@@ -70,8 +70,8 @@ gender_payment_chart = alt.Chart(gender_payment_counts).mark_bar().encode(
 st.altair_chart(gender_payment_chart, use_container_width=True)
 
 # Preferred Payment Method Distribution (Grouped Bar Chart)
-payment_counts = df['Preferred Payment Method'].value_counts()
-payment_chart = alt.Chart(payment_counts.reset_index()).mark_bar().encode(
+payment_counts = df['Preferred Payment Method'].value_counts().reset_index()
+payment_chart = alt.Chart(payment_counts).mark_bar().encode(
     x=alt.X('index:N', title='Preferred Payment Method'),
     y=alt.Y('Preferred Payment Method:Q', title='Count'),
     tooltip=['index:N', 'Preferred Payment Method:Q']

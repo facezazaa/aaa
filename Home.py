@@ -7,6 +7,7 @@ st.header("Show Data Index Price")
 df = pd.read_csv("./data/shopping_trends.csv")
 st.write(df.columns)
 
+
 # Show Chart
 st.header("Show Chart")
 
@@ -25,20 +26,36 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 )
 st.altair_chart(chart, use_container_width=True)
 
+
 # Purchase Amount Distribution (Grouped Bar Chart)
-purchase_range = st.slider("Select Purchase amount range", min_value=df["Purchase Amount (USD)"].min(), max_value=df["Purchase Amount (USD)"].max(), value=(df["Purchase Amount (USD)"].min(), df["Purchase Amount (USD)"].max()))
-filtered_df = df[(df["Purchase Amount (USD)"] >= purchase_range[0]) & (df["Purchase Amount (USD)"] <= purchase_range[1])]
+purchase_range = st.slider("Select Purchase amount range", min_value=df["Purchase Amount"].min(), max_value=df["Purchase Amount"].max(), value=(df["Purchase Amount"].min(), df["Purchase Amount"].max()))
+filtered_df = df[(df["Purchase Amount"] >= purchase_range[0]) & (df["Purchase Amount"] <= purchase_range[1])]
 chart = alt.Chart(filtered_df).mark_bar().encode(
-    x=alt.X('Purchase Amount (USD):Q', title='Purchase Amount (USD)'),
+    x=alt.X('Purchase Amount:Q', title='Purchase Amount (USD)'),
     y=alt.Y('count()', title='Count'),
     color='Gender:N',
-    tooltip=['Gender', 'Purchase Amount (USD)']
+    tooltip=['Gender', 'Purchase Amount']
 ).properties(
     width=600,
     height=400,
     title='Purchase Amount Distribution by Gender'
 )
 st.altair_chart(chart, use_container_width=True)
+
+# Max Purchase Amount by Platform (Grouped Bar Chart)
+max_purchase_by_platform = df.groupby('Platform')['Purchase Amount'].max().reset_index()
+bar_chart = alt.Chart(max_purchase_by_platform).mark_bar().encode(
+    x=alt.X('Platform:N', title='Platform'),
+    y=alt.Y('Purchase Amount:Q', title='Max Purchase Amount (USD)'),
+    color=alt.Color('Platform:N', legend=None),
+    tooltip=['Platform', 'Purchase Amount']
+).properties(
+    width=600,
+    height=400,
+    title='Max Purchase Amount by Platform'
+)
+st.altair_chart(bar_chart, use_container_width=True)
+
 
 # Max Purchase Amount by Platform (Grouped Bar Chart)
 max_purchase_by_platform = df.groupby('Platform')['Purchase Amount (USD)'].max().reset_index()

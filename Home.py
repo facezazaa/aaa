@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-print(df.head())
 
 # Show Data Index Price
 st.header("Show Data Index Price")
@@ -77,4 +76,5 @@ platform_chart = alt.Chart(platform_counts.reset_index()).mark_bar().encode(
     title='Platform Distribution'
 )
 st.altair_chart(platform_chart, use_container_width=True)
+print(df.head())
 

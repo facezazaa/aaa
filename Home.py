@@ -69,9 +69,6 @@ gender_payment_chart = alt.Chart(gender_payment_counts).mark_bar().encode(
 )
 st.altair_chart(gender_payment_chart, use_container_width=True)
 
-st.altair_chart(gender_chart, use_container_width=True)
-st.altair_chart(gender_chart, use_container_width=True)
-
 # Platform Distribution (Pie Chart)
 platform_counts = df['Preferred Payment Method'].value_counts()
 platform_chart = alt.Chart(platform_counts.reset_index()).mark_bar().encode(

@@ -41,16 +41,16 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 # Max Purchase Amount by Platform (Grouped Bar Chart)
-max_purchase_by_platform = df.groupby('Platform')['Purchase Amount (USD)'].max().reset_index()
+max_purchase_by_platform = df.groupby('Preferred Payment Method')['Purchase Amount (USD)'].max().reset_index()
 bar_chart = alt.Chart(max_purchase_by_platform).mark_bar().encode(
-    x=alt.X('Platform:N', title='Platform'),
+    x=alt.X('Preferred Payment Method:N', title='Preferred Payment Method'),
     y=alt.Y('Purchase Amount (USD):Q', title='Max Purchase Amount (USD)'),
-    color=alt.Color('Platform:N', legend=None),
-    tooltip=['Platform', 'Purchase Amount (USD)']
+    color=alt.Color('Preferred Payment Method:N', legend=None),
+    tooltip=['Preferred Payment Method', 'Purchase Amount (USD)']
 ).properties(
     width=600,
     height=400,
-    title='Max Purchase Amount by Platform'
+    title='Max Purchase Amount by Preferred Payment Method'
 )
 st.altair_chart(bar_chart, use_container_width=True)
 
@@ -69,15 +69,15 @@ gender_chart = alt.Chart(gender_counts.reset_index()).mark_bar().encode(
 st.altair_chart(gender_chart, use_container_width=True)
 
 # Platform Distribution (Pie Chart)
-platform_counts = df['Platform'].value_counts()
+platform_counts = df['Preferred Payment Method'].value_counts()
 platform_chart = alt.Chart(platform_counts.reset_index()).mark_bar().encode(
-    x=alt.X('index:N', title='Platform'),
-    y=alt.Y('Platform:Q', title='Count'),
-    tooltip=['index:N', 'Platform:Q']
+    x=alt.X('index:N', title='Preferred Payment Method'),
+    y=alt.Y('Preferred Payment Method:Q', title='Count'),
+    tooltip=['index:N', 'Preferred Payment Method:Q']
 ).properties(
     width=600,
     height=400,
-    title='Platform Distribution'
+    title='Preferred Payment Method Distribution'
 )
 st.altair_chart(platform_chart, use_container_width=True)
 

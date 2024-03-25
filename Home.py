@@ -77,4 +77,3 @@ platform_chart = alt.Chart(platform_counts.reset_index()).mark_bar().encode(
     title='Platform Distribution'
 )
 st.altair_chart(platform_chart, use_container_width=True)
-

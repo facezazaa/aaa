@@ -42,13 +42,13 @@ st.altair_chart(chart, use_container_width=True)
 max_age_by_platform = df.groupby('platform')['age'].max().reset_index()
 bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
     x=alt.X('platform:N', title='Platform'),
-    y=alt.Y('age:Q', title='Max Age'),
+    y=alt.Y('gender:Q', title='Max gender'),
     color=alt.Color('platform:N', legend=None),
     tooltip=['platform', 'age']
 ).properties(
     width=600,
     height=400,
-    title='Max Age by Platform'
+    title='Max gender by Platform'
 )
 st.altair_chart(bar_chart, use_container_width=True)
 
